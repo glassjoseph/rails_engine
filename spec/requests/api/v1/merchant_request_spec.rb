@@ -12,9 +12,9 @@ RSpec.describe "Merchants API" do
 
     expect(response).to be_success
     expect(merchant).to have_key("id")
-    expect(merchant["id"]).to eq(1)
+    expect(merchant["id"]).to eq(Merchant.first.id)
     expect(merchant).to have_key("name")
-    expect(merchant["name"]).to eq("Merchant #2")
+    expect(merchant["name"]).to eq(Merchant.first.name)
   end
 
   it "shows one merchant" do
@@ -26,7 +26,7 @@ RSpec.describe "Merchants API" do
     merchant = JSON.parse(response.body)
     expect(merchant["id"]).to eq(id)
     expect(merchant).to have_key("name")
-    expect(merchant["name"]).to eq("Merchant #5")
+    expect(merchant["name"]).to eq(Merchant.last.name)
   end
 
 end

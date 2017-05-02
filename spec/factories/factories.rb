@@ -8,7 +8,7 @@ FactoryGirl.define do
 
   factory :item do
     sequence :name do |n|
-      "Item # #{n}"
+      "Item ##{n}"
     end
 
     description "This is an item."
@@ -45,6 +45,16 @@ FactoryGirl.define do
       "date: #{n}"
     end
     result "success"
+  end
+
+
+  factory :invoice_item do
+    item
+    invoice
+    quantity 3
+    sequence :unit_price do |n|
+      n * 123
+    end
   end
 
 

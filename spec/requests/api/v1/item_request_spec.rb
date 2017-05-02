@@ -15,7 +15,7 @@ RSpec.describe "Items API" do
     expect(item["name"]).to eq("Item # 2")
     expect(item["description"]).to eq("This is an item.")
     expect(item["unit_price"]).to eq(db_item.unit_price)
-    expect(item["merchant_id"]).to eq(1)
+    expect(item["merchant_id"]).to eq(db_item.merchant_id)
   end
 
 

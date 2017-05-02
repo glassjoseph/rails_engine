@@ -21,4 +21,31 @@ FactoryGirl.define do
   end
 
 
+  factory :customer do
+    sequence :first_name do |n|
+      "John #{n}"
+    end
+    sequence :last_name do |n|
+      "Padrinowski #{n}"
+    end
+  end
+
+  factory :invoice do
+    customer
+    merchant
+    status "shipped"
+  end
+
+  factory :transaction do
+    invoice
+    sequence :credit_card_number do |n|
+      n
+    end
+    sequence :credit_card_expiration_date do |n|
+      "date: #{n}"
+    end
+    result "success"
+  end
+
+
 end

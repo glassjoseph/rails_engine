@@ -11,7 +11,7 @@ RSpec.describe "InvoiceItems API" do
     invoice_item = invoice_items.first
 
     expect(response).to be_success
-    expect(invoice_item["id"]).to eq(1)
+    expect(invoice_item["id"]).to eq(db_invoice_item.id)
     expect(invoice_item["item_id"]).to eq(db_invoice_item.item_id)
     expect(invoice_item["invoice_id"]).to eq(db_invoice_item.invoice_id)
     expect(invoice_item["quantity"]).to eq(db_invoice_item.quantity)
@@ -27,7 +27,7 @@ RSpec.describe "InvoiceItems API" do
 
       invoice_item = JSON.parse(response.body)
       expect(response).to be_success
-      expect(invoice_item["id"]).to eq(4)
+      expect(invoice_item["id"]).to eq(db_invoice_item.id)
       expect(invoice_item["item_id"]).to eq(db_invoice_item.item_id)
       expect(invoice_item["invoice_id"]).to eq(db_invoice_item.invoice_id)
       expect(invoice_item["quantity"]).to eq(db_invoice_item.quantity)

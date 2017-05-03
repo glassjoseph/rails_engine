@@ -4,7 +4,19 @@ FactoryGirl.define do
     sequence :name do |n|
       "Merchant ##{n}"
     end
+
+    factory :merchant_with_invoices, class: Merchant do
+
+      transient do
+        invoices_count 4
+      end
+
+      after(:create) do |merchant, evaluator|
+        create_list(:invoice, evaluator.invoices_count, merchant: merchant)
+      end
+    end
   end
+
 
   factory :item do
     sequence :name do |n|
@@ -52,10 +64,6 @@ FactoryGirl.define do
     item
     invoice
     quantity 3
-    sequence :unit_price do |n|
-      n * 123
-    end
+    unit_price 400
   end
-
-
 end

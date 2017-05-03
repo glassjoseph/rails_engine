@@ -3,7 +3,7 @@ class Merchant < ApplicationRecord
   has_many :invoices
 
   def revenue
-    sum = invoices.joins(:invoice_items).sum("unit_price * quantity")
+    sum = invoices.successful_transactions.sum("unit_price * quantity")
     {revenue: sum}
   end
 end

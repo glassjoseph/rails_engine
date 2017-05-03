@@ -8,25 +8,24 @@ RSpec.describe "Customers API" do
     get "/api/v1/customers"
 
     customers = JSON.parse(response.body)
-    customer = Customer.first
+    customer = customers.first
 
     expect(response).to be_success
-    expect(customer["id"]).to eq(1)
+    expect(customer["id"]).to eq(db_customer.id)
     expect(customer["first_name"]).to eq(db_customer.first_name)
     expect(customer["last_name"]).to eq(db_customer.last_name)
   end
 
+  it "shows one customer" do
+    db_customer = create(:customer)
+    get "/api/v1/customers/#{db_customer.id}"
 
-    it "shows one customer" do
-      db_customer = create(:customer)
-      get "/api/v1/customers/#{db_customer.id}"
+    expect(response).to be_success
 
-      expect(response).to be_success
-
-      customer = JSON.parse(response.body)
-      expect(response).to be_success
-      expect(customer["id"]).to eq(4)
-      expect(customer["first_name"]).to eq(db_customer.first_name)
-      expect(customer["last_name"]).to eq(db_customer.last_name)
-    end
+    customer = JSON.parse(response.body)
+    expect(response).to be_success
+    expect(customer["id"]).to eq(db_customer.id)
+    expect(customer["first_name"]).to eq(db_customer.first_name)
+    expect(customer["last_name"]).to eq(db_customer.last_name)
+  end
 end

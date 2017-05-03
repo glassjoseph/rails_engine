@@ -7,6 +7,7 @@ RSpec.describe "Merchant revenue API" do
 
     merchant.invoices.each do |invoice|
       invoice.invoice_items << create(:invoice_item)
+      invoice.transactions << create(:transaction)
     end
 
     get "/api/v1/merchants/#{merchant.id}/revenue"

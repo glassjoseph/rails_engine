@@ -12,7 +12,7 @@ RSpec.describe "Transactions API" do
     transaction = transactions.first
 
     expect(response).to be_success
-    expect(transaction["id"]).to eq(1)
+    expect(transaction["id"]).to eq(db_transaction.id)
     expect(transaction["invoice_id"]).to eq(db_transaction.invoice_id)
     expect(transaction["credit_card_number"]).to eq(db_transaction.credit_card_number)
     expect(transaction["credit_card_expiration_date"]).to eq(db_transaction.credit_card_expiration_date)

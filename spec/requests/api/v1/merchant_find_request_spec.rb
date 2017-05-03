@@ -37,4 +37,26 @@ RSpec.describe "Merchant find API" do
     expect(merchants.first['id']).to eq(db_merchant1.id)
     expect(merchants.first['name']).to eq("James")
   end
+
+    it "can find merchant by created_at" do
+      db_merchant = create(:merchant, created_at: "2012-03-27T14:56:04.000Z")
+      get "/api/v1/merchants/find?created_at='2012-03-27T14:56:04.000Z'"
+      merchant = JSON.parse(response.body)
+
+      expect(response).to be_success
+      expect(merchant['id']).to eq(db_merchant.id)
+      expect(merchant['name']).to eq(db_merchant.name)
+    end
+
+    it "can find merchant by updated_at" do
+
+      db_merchant = create(:merchant, updated_at: "2012-03-27T14:56:04.000Z")
+      get "/api/v1/merchants/find?updated_at='2012-03-27T14:56:04.000Z'"
+      merchant = JSON.parse(response.body)
+
+      expect(response).to be_success
+      expect(merchant['id']).to eq(db_merchant.id)
+      expect(merchant['name']).to eq(db_merchant.name)
+    end
+
 end

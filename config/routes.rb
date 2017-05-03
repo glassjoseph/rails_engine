@@ -26,6 +26,13 @@ Rails.application.routes.draw do
 
 
       resources :invoice_items, only: [:index, :show]
+
+      namespace :customers do
+        get "/find", to: "find#show"
+        get "/find_all", to: "find#index"
+        get "/random", to: "random#index"
+      end
+    
       resources :customers, only: [:index, :show]
 
       namespace :transactions do
@@ -33,7 +40,7 @@ Rails.application.routes.draw do
         get "/find_all", to: 'find#index'
         get "/random", to: 'random#show'
       end
-      
+
       resources :transactions, only: [:index, :show]
 
 

@@ -1,3 +1,4 @@
+require 'rails_helper'
 
 RSpec.describe "API random functionality" do
   it "returns random invoice" do

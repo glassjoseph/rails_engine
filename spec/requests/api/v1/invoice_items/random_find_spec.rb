@@ -1,9 +1,9 @@
 
 RSpec.describe "API random functionality" do
-  it "returns random invoice" do
-    db_invoice1 = create(:invoice, updated_at: "2012-03-27T14:56:04.000Z")
-    db_invoice2 = create(:invoice, updated_at: "2012-03-27T14:56:04.000Z")
-    db_invoice3 = create(:invoice, updated_at: "2012-03-27T14:56:04.000Z")
+  it "returns random invoice item" do
+    db_invoice1 = create(:invoice_item, updated_at: "2012-03-27T14:56:04.000Z")
+    db_invoice2 = create(:invoice_item, updated_at: "2012-03-27T14:56:04.000Z")
+    db_invoice3 = create(:invoice_item, updated_at: "2012-03-27T14:56:04.000Z")
     get "/api/v1/invoices/random"
 
     invoice = JSON.parse(response.body)

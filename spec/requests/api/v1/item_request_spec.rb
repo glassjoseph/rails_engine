@@ -19,17 +19,17 @@ RSpec.describe "Items API" do
   end
 
 
-    it "shows one item" do
-      db_item = create(:item)
-      get "/api/v1/items/#{db_item.id}"
+  it "shows one item" do
+    db_item = create(:item)
+    get "/api/v1/items/#{db_item.id}"
 
-      expect(response).to be_success
+    expect(response).to be_success
 
-      item = JSON.parse(response.body)
-      expect(item["id"]).to eq(db_item.id)
-      expect(item["name"]).to eq(db_item.name)
-      expect(item["description"]).to eq(db_item.description)
-      expect(item["unit_price"]).to eq(db_item.unit_price)
-      expect(item["merchant_id"]).to eq(db_item.merchant_id)
-    end
+    item = JSON.parse(response.body)
+    expect(item["id"]).to eq(db_item.id)
+    expect(item["name"]).to eq(db_item.name)
+    expect(item["description"]).to eq(db_item.description)
+    expect(item["unit_price"]).to eq(db_item.unit_price)
+    expect(item["merchant_id"]).to eq(db_item.merchant_id)
+  end
 end

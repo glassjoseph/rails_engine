@@ -15,6 +15,8 @@ RSpec.describe "Merchants API" do
     expect(merchant["id"]).to eq(Merchant.first.id)
     expect(merchant).to have_key("name")
     expect(merchant["name"]).to eq(Merchant.first.name)
+    expect(merchant).to_not have_key("created_at")
+    expect(merchant).to_not have_key("updated_at")
   end
 
   it "shows one merchant" do
@@ -27,6 +29,7 @@ RSpec.describe "Merchants API" do
     expect(merchant["id"]).to eq(id)
     expect(merchant).to have_key("name")
     expect(merchant["name"]).to eq(Merchant.last.name)
+    expect(merchant).to_not have_key("created_at")
+    expect(merchant).to_not have_key("updated_at")
   end
-
 end

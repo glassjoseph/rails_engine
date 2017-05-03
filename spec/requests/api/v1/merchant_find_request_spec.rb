@@ -22,4 +22,19 @@ RSpec.describe "Merchant find API" do
     expect(merchant['id']).to eq(899)
     expect(merchant['name']).to eq(db_merchant.name)
   end
+
+  it "can find all merchants with find_all" do
+
+    db_merchant1 = create(:merchant, name: "James")
+    db_merchant2 = create(:merchant, name: "James")
+    db_merchant3 = create(:merchant, name: "James")
+
+    get "/api/v1/merchants/find_all?name=James"
+    merchants = JSON.parse(response.body)
+
+    expect(response).to be_success
+    expect(merchants.count).to eq(3)
+    expect(merchants.first['id']).to eq(db_merchant1.id)
+    expect(merchants.first['name']).to eq("James")
+  end
 end

@@ -1,7 +1,6 @@
 class Api::V1::Merchants::RandomController < ApplicationController
 
   def show
-    binding.pry
     render json: Merchant.find(1 + rand(Merchant.count))
   end
 

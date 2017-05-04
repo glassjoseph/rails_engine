@@ -86,8 +86,9 @@ RSpec.describe "Merchant BI API" do
     merchants = JSON.parse(response.body)
 
     expect(response).to be_success
+    expect(merchants.first["id"]).to eq(merchant1.id)
+    expect(merchants.first["name"]).to eq(merchant1.name)
     expect(merchants.second["id"]).to eq(merchant2.id)
     expect(merchants.second["name"]).to eq(merchant2.name)
-    expect(merchant["revenue_by_date"]).to eq(4800)
   end
 end

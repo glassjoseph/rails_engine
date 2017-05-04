@@ -11,5 +11,13 @@ class Merchant < ApplicationRecord
     invoices.successful_transactions.where(created_at: date).sum("unit_price * quantity")
   end
 
+  def customers_with_pending_invoices
+    failed_cust_ids =
+    invoices.joins(:transactions).
+    group('invoices.id').
+    having('sum(transactions.result) = 0').
+    pluck(:customer_id)
 
+    Customer.where(id: failed_cust_ids)
+  end
 end

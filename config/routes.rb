@@ -18,6 +18,7 @@ Rails.application.routes.draw do
         get "/revenue", to: 'merchants/revenues#show'
         get "/invoices", to: 'merchants/invoices#show'
         get "/items", to: 'merchants/items#show'
+        get "/customers_with_pending_invoices", to: 'merchants/pending_invoices#show'
       end
 
       namespace :invoices do

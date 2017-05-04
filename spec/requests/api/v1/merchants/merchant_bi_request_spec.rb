@@ -36,6 +36,7 @@ RSpec.describe "Merchant BI API" do
     expect(response).to be_success
     expect(customers.count).to eq(1)
     expect(customer["id"]).to eq(1)
+  end
 
   it "returns revenue from a certain date for a merchant" do
     merchant = create(:merchant_with_invoices)

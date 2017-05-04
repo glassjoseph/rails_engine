@@ -59,6 +59,17 @@ FactoryGirl.define do
     result "success"
   end
 
+  factory :failed_transaction, class: Transaction do
+    sequence :credit_card_number do |n|
+      n
+    end
+    invoice
+    sequence :credit_card_expiration_date do |n|
+      "date: #{n}"
+    end
+    result "failure"
+  end
+
 
   factory :invoice_item do
     item

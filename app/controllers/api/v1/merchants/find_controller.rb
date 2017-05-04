@@ -8,6 +8,11 @@ class Api::V1::Merchants::FindController < ApplicationController
 
   def show
     render json: Merchant.find_by(search_params)
+    # For future case-insensitivity
+
+    #search_params.values.first.downcase!
+    # Merchant.find_by("lower(name) = ?", search_params["name"].downcase)
+
   end
 
 

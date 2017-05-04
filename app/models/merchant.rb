@@ -6,4 +6,10 @@ class Merchant < ApplicationRecord
     sum = invoices.successful_transactions.sum("unit_price * quantity")
     {revenue: sum}
   end
+
+  def revenue_by_date(date)
+    invoices.successful_transactions.where(created_at: date).sum("unit_price * quantity")
+  end
+
+
 end

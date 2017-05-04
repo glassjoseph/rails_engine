@@ -12,5 +12,11 @@ class Merchant < ApplicationRecord
     {revenue: sum}
   end
 
+  def self.most_items(limit)
+    Merchant.joins(:items).order('count(items.merchant_id) DESC').group(:id).limit(limit)
+  end
+
+
+# Company.joins(:jobs).group("companies.id").order("count(companies.id) DESC"
 
 end

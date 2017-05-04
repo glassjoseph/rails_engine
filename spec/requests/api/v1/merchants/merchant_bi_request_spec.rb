@@ -20,7 +20,6 @@ RSpec.describe "Merchant revenue API" do
 
   it "returns revenue from a certain date for a merchant" do
     merchant = create(:merchant_with_invoices)
-    binding.pry
     merchant.invoices.update_all(created_at: "2012-03-25T13:54:11.000Z")
 
 
@@ -33,6 +32,7 @@ RSpec.describe "Merchant revenue API" do
 
     diff_date_invoice.transactions << create(:transaction)
 
+    diff_date_invoice.invoice_items << create(:invoice_item)
     merchant.invoices << diff_date_invoice
 
     get "/api/v1/merchants/#{merchant.id}/revenue?date=2012-03-25T13:54:11.000Z"
@@ -40,6 +40,33 @@ RSpec.describe "Merchant revenue API" do
     merchant = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(merchant["revenue_by_date"]).to eq(4800)
+    expect(merchant["revenue"]).to eq(4800)
+  end
+
+  it "returns merchants with most items" do
+    merchant1 = create(:merchant)
+    merchant2 = create(:merchant)
+    merchant3 = create(:merchant)
+    create_list(:item, 10)
+
+    merchant1.items << Item.take(10)
+    merchant2.items << Item.take(4)
+    merchant3.items << Item.take(1)
+
+    get "/api/v1/merchants/most_items/?quantity=1"
+
+    merchant = JSON.parse(response.body)[0]
+
+    expect(response).to be_success
+    expect(merchant["id"]).to eq(merchant1.id)
+    expect(merchant["name"]).to eq(merchant1.name)
+
+    get "/api/v1/merchants/most_items/?quantity=2"
+
+    merchants = JSON.parse(response.body)
+
+    expect(response).to be_success
+    expect(merchants.second["id"]).to eq(merchant2.id)
+    expect(merchants.second["name"]).to eq(merchant2.name)
   end
 end

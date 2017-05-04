@@ -8,7 +8,8 @@ class Merchant < ApplicationRecord
   end
 
   def revenue_by_date(date)
-    invoices.successful_transactions.where(created_at: date).sum("unit_price * quantity")
+    sum = invoices.successful_transactions.where(created_at: date).sum("unit_price * quantity")
+    {revenue: sum}
   end
 
   def customers_with_pending_invoices

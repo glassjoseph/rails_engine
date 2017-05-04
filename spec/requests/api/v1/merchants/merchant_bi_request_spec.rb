@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.describe "Merchant BI API" do
   it "returns revenue for a merchant" do
 
@@ -37,29 +36,27 @@ RSpec.describe "Merchant BI API" do
     expect(customers.count).to eq(1)
     expect(customer["id"]).to eq(1)
 
-  it "returns revenue from a certain date for a merchant" do
+  end
+
+  it "returns merchants favorite customer" do
+
     merchant = create(:merchant_with_invoices)
-    binding.pry
-    merchant.invoices.update_all(created_at: "2012-03-25T13:54:11.000Z")
 
+    invoice = merchant.invoices.first
+    inv_customer = invoice.customer
 
-    merchant.invoices.each do |invoice|
-      invoice.invoice_items << create(:invoice_item)
+    3.times do
       invoice.transactions << create(:transaction)
     end
 
-    diff_date_invoice = create(:invoice, created_at: "1985-03-25T13:54:11.000Z")
+    get "/api/v1/merchants/#{merchant.id}/favorite_customer"
 
-    diff_date_invoice.transactions << create(:transaction)
-
-    merchant.invoices << diff_date_invoice
-
-    get "/api/v1/merchants/#{merchant.id}/revenue?date=2012-03-25T13:54:11.000Z"
-
-    merchant = JSON.parse(response.body)
+    customer = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(merchant["revenue_by_date"]).to eq(4800)
+    expect(customer["first_name"]).to eq(inv_customer.first_name)
+    expect(customer["last_name"]).to eq(inv_customer.last_name)
+    expect(customer["id"]).to eq(inv_customer.id)
 
   end
 end

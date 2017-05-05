@@ -2,7 +2,12 @@ class Api::V1::InvoiceItems::FindController < ApplicationController
 
 
   def index
-    render json: InvoiceItem.where(search_params)
+    if params[:unit_price]
+      params[:unit_price].gsub!('.', '')
+      render json: InvoiceItem.where(search_params)
+    else
+      render json: InvoiceItem.where(search_params)
+    end
   end
 
 

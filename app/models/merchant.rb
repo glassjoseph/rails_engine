@@ -3,11 +3,22 @@ class Merchant < ApplicationRecord
   has_many :invoices
   has_many :customers, through: :invoices
   has_many :transactions, through: :invoices
+  has_many :invoice_items, through: :invoices
 
 
   def revenue
     sum = invoices.successful_transactions.sum("unit_price * quantity")
     {revenue: format_price(sum)}
+  end
+
+  def self.most_revenue_by_date(date)
+    sum = joins(:invoice_items).
+    merge(InvoiceItem.successful).
+    where(invoices: {created_at: date}).
+    sum("invoice_items.quantity * invoice_items.unit_price")
+    merch = Merchant.new
+
+    {total_revenue: merch.format_price(sum)}
   end
 
   def revenue_by_date(date)

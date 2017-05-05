@@ -8,7 +8,7 @@ This project was an API with 25+ endpoints created from multiple CSVs using Ruby
 ## Setup
 
 * 'git clone https://github.com/glassjoseph/rails_engine.git'
-* 'cd rales_engine'
+* 'cd rails_engine'
 * remember to bundle!
 * 'rake db:create db:migrate' to create the PostgreSQL database with proper migrations.
 * 'rake data_import:csv_load' to seed all data.

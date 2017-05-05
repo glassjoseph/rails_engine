@@ -66,12 +66,6 @@
         1,
         null
       ],
-      "/Users/Mac/turing/03Module/rails_engine/app/models/invoice_item.rb": [
-        1,
-        1,
-        1,
-        null
-      ],
       "/Users/Mac/turing/03Module/rails_engine/app/models/invoice.rb": [
         1,
         1,
@@ -112,6 +106,12 @@
         1,
         null,
         null,
+        null
+      ],
+      "/Users/Mac/turing/03Module/rails_engine/app/models/invoice_item.rb": [
+        1,
+        1,
+        1,
         null
       ],
       "/Users/Mac/turing/03Module/rails_engine/app/controllers/api/v1/customers/invoices_controller.rb": [
@@ -245,11 +245,23 @@
         null,
         null
       ],
-      "/Users/Mac/turing/03Module/rails_engine/app/controllers/api/v1/invoices/random_controller.rb": [
+      "/Users/Mac/turing/03Module/rails_engine/app/controllers/api/v1/invoice_items/random_controller.rb": [
         1,
         null,
         1,
-        2,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null
@@ -280,12 +292,43 @@
         null,
         null
       ],
+      "/Users/Mac/turing/03Module/rails_engine/app/controllers/api/v1/invoices/invoice_items_controller.rb": [
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/Mac/turing/03Module/rails_engine/app/controllers/api/v1/invoices/items_controller.rb": [
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
       "/Users/Mac/turing/03Module/rails_engine/app/controllers/api/v1/invoices_controller.rb": [
         1,
         null,
         1,
         1,
         null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/Mac/turing/03Module/rails_engine/app/controllers/api/v1/invoices/random_controller.rb": [
+        1,
         null,
         1,
         1,
@@ -588,50 +631,7 @@
         0,
         0
       ],
-      "/Users/Mac/turing/03Module/rails_engine/app/controllers/api/v1/invoice_items/random_controller.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
       "/Users/Mac/turing/03Module/rails_engine/app/controllers/api/v1/invoices/customers_controller.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/Mac/turing/03Module/rails_engine/app/controllers/api/v1/invoices/invoice_items_controller.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/Mac/turing/03Module/rails_engine/app/controllers/api/v1/invoices/items_controller.rb": [
         0,
         0,
         0,
@@ -663,18 +663,8 @@
         0,
         0,
         0
-      ],
-      "/Users/Mac/turing/03Module/rails_engine/app/jobs/application_job.rb": [
-        0,
-        0
-      ],
-      "/Users/Mac/turing/03Module/rails_engine/app/mailers/application_mailer.rb": [
-        0,
-        0,
-        0,
-        0
       ]
     },
-    "timestamp": 1493949382
+    "timestamp": 1493951073
   }
 }

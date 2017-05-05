@@ -37,7 +37,6 @@ RSpec.describe "Merchant BI API" do
     expect(customer["id"]).to eq(1)
   end
 
-
   it "returns merchants favorite customer" do
 
     merchant = create(:merchant_with_invoices)

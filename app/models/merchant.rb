@@ -4,14 +4,15 @@ class Merchant < ApplicationRecord
   has_many :customers, through: :invoices
   has_many :transactions, through: :invoices
 
+
   def revenue
     sum = invoices.successful_transactions.sum("unit_price * quantity")
-    {revenue: sum}
+    {revenue: format_price(sum)}
   end
 
   def revenue_by_date(date)
     sum = invoices.successful_transactions.where(created_at: date).sum("unit_price * quantity")
-    {revenue: sum}
+    {revenue: format_price(sum)}
   end
 
   def self.most_items(limit)
@@ -29,7 +30,6 @@ class Merchant < ApplicationRecord
     Customer.where(id: failed_cust_ids)
   end
 
-
   def favorite_customer
     customers.
       joins(:invoices, :transactions).
@@ -39,4 +39,7 @@ class Merchant < ApplicationRecord
       take
   end
 
+  def format_price(sum)
+    (sum.to_f/100).to_s
+  end
 end

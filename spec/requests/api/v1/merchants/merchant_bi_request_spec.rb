@@ -95,9 +95,8 @@ it "returns revenue from a certain date for a merchant" do
     get "/api/v1/merchants/revenue?date=2012-03-25T13:54:11.000Z"
 
     merchant = JSON.parse(response.body)
-
     expect(response).to be_success
-    expect(merchant["revenue"]).to eq("192.0")
+    expect(merchant["total_revenue"]).to eq("192.0")
   end
 
   it "returns merchants with most items" do

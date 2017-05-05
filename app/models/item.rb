@@ -11,4 +11,9 @@ class Item < ApplicationRecord
     {best_day: date}
   end
 
+  def self.most_items(limit = 5)
+    Item.joins(:invoice_items, invoices: :transactions).merge(Transaction.successful).order( 'sum(invoice_items.quantity) DESC').group(:id).limit(limit)
+  end
+
+
 end

@@ -37,12 +37,10 @@ RSpec.describe "Merchant BI API" do
     expect(customer["id"]).to eq(1)
   end
 
-  end
-
   it "returns merchants favorite customer" do
 
     merchant = create(:merchant_with_invoices)
-    
+
     merchant.invoices.update_all(created_at: "2012-03-25T13:54:11.000Z")
 
     invoice = merchant.invoices.first
@@ -61,7 +59,7 @@ RSpec.describe "Merchant BI API" do
     expect(customer["last_name"]).to eq(inv_customer.last_name)
     expect(customer["id"]).to eq(inv_customer.id)
   end
-  
+
 
 
 it "returns revenue from a certain date for a merchant" do
@@ -73,10 +71,7 @@ it "returns revenue from a certain date for a merchant" do
       invoice.invoice_items << create(:invoice_item)
       invoice.transactions << create(:transaction)
     end
-  
-    diff_date_invoice.invoice_items << create(:invoice_item)
-    merchant.invoices << diff_date_invoice
-
+    
     get "/api/v1/merchants/#{merchant.id}/revenue?date=2012-03-25T13:54:11.000Z"
 
     merchant = JSON.parse(response.body)

@@ -80,6 +80,26 @@ it "returns revenue from a certain date for a merchant" do
     expect(merchant["revenue"]).to eq("48.0")
   end
 
+  it "returns total revenue for a date across all merchants" do
+    merchant = create(:merchant_with_invoices)
+    merchant.invoices.update_all(created_at: "2012-03-25T13:54:11.000Z")
+
+
+    merchant.invoices.each do |invoice|
+      invoice.invoice_items << create(:invoice_item)
+      invoice.invoice_items << create(:invoice_item)
+      invoice.transactions << create(:transaction)
+      invoice.transactions << create(:transaction)
+    end
+
+    get "/api/v1/merchants/revenue?date=2012-03-25T13:54:11.000Z"
+
+    merchant = JSON.parse(response.body)
+
+    expect(response).to be_success
+    expect(merchant["revenue"]).to eq("192.0")
+  end
+
   it "returns merchants with most items" do
     merchant1 = create(:merchant)
     merchant2 = create(:merchant)
@@ -108,5 +128,9 @@ it "returns revenue from a certain date for a merchant" do
     expect(merchants.first["name"]).to eq(merchant1.name)
     expect(merchants.second["id"]).to eq(merchant2.id)
     expect(merchants.second["name"]).to eq(merchant2.name)
+  end
+
+  it "returns top merchants by revenue" do
+
   end
 end

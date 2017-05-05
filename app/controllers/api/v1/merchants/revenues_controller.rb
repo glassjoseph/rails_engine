@@ -1,7 +1,10 @@
 class Api::V1::Merchants::RevenuesController < ApplicationController
 
+  def index
+    render json: Merchant.most_revenue_by_date(params[:date])
+  end
+
   def show
-    # binding.pry
     merchant = Merchant.find(params[:merchant_id])
     if params[:date]
       render json: merchant.revenue_by_date(params[:date])
@@ -9,8 +12,5 @@ class Api::V1::Merchants::RevenuesController < ApplicationController
       render json: merchant.revenue
     end
   end
-
-  private
-
 
 end

@@ -3,5 +3,5 @@ class Transaction < ApplicationRecord
 
   scope :successful, -> {where(result: 1)}
 
-  enum result: %w(failure success)
+  enum result: %w(failed success)
 end

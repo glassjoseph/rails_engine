@@ -5,7 +5,7 @@ RSpec.describe "Invoice item API" do
 
     invoice = create(:invoice)
 
-    invoice.items << create(:item)
+    invoice.items << create_list(:item, 2)
 
     db_item = invoice.items.first
 
@@ -16,6 +16,9 @@ RSpec.describe "Invoice item API" do
     item = items.first
 
     expect(response).to be_success
-    expect(items).to eq(JSON.parse(invoice.items.to_json))
+    expect(items.count).to eq(2)
+    expect(item["id"]).to eq(db_item.id)
+    expect(item["name"]).to eq(db_item.name)
+    expect(item["description"]).to eq(db_item.description)
   end
 end

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-
+  #add /api/v1/transactions/find_all?result=
 
   # GET /api/v1/merchants.json
 

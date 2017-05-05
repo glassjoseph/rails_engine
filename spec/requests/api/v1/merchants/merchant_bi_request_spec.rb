@@ -15,7 +15,7 @@ RSpec.describe "Merchant BI API" do
     merchant = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(merchant["revenue"]).to eq(4800)
+    expect(merchant["revenue"]).to eq("48.0")
   end
 
   it "returns customers with pending invoices" do
@@ -77,7 +77,7 @@ it "returns revenue from a certain date for a merchant" do
     merchant = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(merchant["revenue"]).to eq(4800)
+    expect(merchant["revenue"]).to eq("48.0")
   end
 
   it "returns total revenue for a date across all merchants" do

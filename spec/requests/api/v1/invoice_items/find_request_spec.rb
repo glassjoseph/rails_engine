@@ -55,7 +55,7 @@ RSpec.describe "invoice_item find API" do
 
       expect(response).to be_success
       expect(invoice_item['id']).to eq(db_invoice_item.id)
-      expect(invoice_item['unit_price']).to eq(db_invoice_item.unit_price)
+      expect(invoice_item['unit_price']).to eq(((db_invoice_item.unit_price).to_f/100).to_s)
     end
 
 
@@ -66,7 +66,7 @@ RSpec.describe "invoice_item find API" do
 
     expect(response).to be_success
     expect(invoice_item['id']).to eq(db_invoice_item.id)
-    expect(invoice_item['created_at']).to eq("2012-03-27T14:56:04.000Z")
+    expect(invoice_item['created_at']).to be_nil
   end
 
   it "can find invoice_item by updated_at" do
@@ -137,7 +137,7 @@ RSpec.describe "invoice_item find API" do
       expect(response).to be_success
       expect(invoice_items.count).to eq(3)
       expect(invoice_items.first['id']).to eq(db_invoice_item1.id)
-      expect(invoice_items.first['unit_price']).to eq(db_invoice_item1.unit_price)
+      expect(invoice_items.first['unit_price']).to eq(((db_invoice_item1.unit_price).to_f/100).to_s)
     end
 
   it "can find all invoice_items by created_at" do
@@ -152,7 +152,7 @@ RSpec.describe "invoice_item find API" do
     expect(response).to be_success
     expect(invoice_items.count).to eq(3)
     expect(invoice_items.first['id']).to eq(db_invoice_item1.id)
-    expect(invoice_items.first['created_at']).to eq("2012-03-27T14:56:04.000Z")
+    expect(invoice_items.first['created_at']).to be_nil
   end
 
   it "can find all invoice_items by updated_at" do
@@ -167,6 +167,6 @@ RSpec.describe "invoice_item find API" do
     expect(response).to be_success
     expect(invoice_items.count).to eq(3)
     expect(invoice_items.first['id']).to eq(db_invoice_item1.id)
-    expect(invoice_items.first['updated_at']).to eq("2012-03-27T14:56:04.000Z")
+    expect(invoice_items.first['updated_at']).to be_nil
   end
 end

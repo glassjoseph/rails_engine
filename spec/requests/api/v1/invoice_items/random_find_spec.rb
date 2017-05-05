@@ -1,4 +1,4 @@
-
+require 'rails_helper'
 RSpec.describe "API random functionality" do
   it "returns random invoice item" do
     db_invoice1 = create(:invoice_item, updated_at: "2012-03-27T14:56:04.000Z")
@@ -9,7 +9,7 @@ RSpec.describe "API random functionality" do
     invoice = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(invoice.count).to eq(7)
+    expect(invoice.count).to eq(5)
 
   end
 end

@@ -16,6 +16,9 @@ RSpec.describe "Customer invoice API" do
     invoice = invoices.first
 
     expect(response).to be_success
-    expect(invoices).to eq(JSON.parse(customer.invoices.to_json))
+    expect(invoice['id']).to eq(db_invoice.id)
+    expect(invoice['customer_id']).to eq(db_invoice.customer_id)
+    expect(invoice['merchant_id']).to eq(db_invoice.merchant_id)
+    expect(invoice['status']).to eq(db_invoice.status)
   end
 end

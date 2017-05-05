@@ -16,6 +16,8 @@ RSpec.describe "Invoice invoice items API" do
     invoice_item = invoice_items.first
 
     expect(response).to be_success
-    expect(invoice_items).to eq(JSON.parse(invoice.invoice_items.to_json))
+    expect(invoice_items.first["item_id"]).to eq(db_invoice_item.item_id)
+    expect(invoice_items.first["invoice_id"]).to eq(db_invoice_item.invoice_id)
+    expect(invoice_items.first["quantity"]).to eq(db_invoice_item.quantity)
   end
 end

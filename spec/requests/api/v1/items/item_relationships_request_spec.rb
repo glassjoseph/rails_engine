@@ -32,7 +32,6 @@ RSpec.describe "Item API" do
     expect(invoice_items.count).to eq(2)
     expect(invoice_item["id"]).to eq(db_invoice_item.item.id)
     expect(invoice_item["quantity"]).to eq(db_invoice_item.quantity)
-    expect(invoice_item["unit_price"]).to eq(db_invoice_item.unit_price)
     expect(invoice_item["item_id"]).to eq(db_invoice_item.item_id)
   end
 end

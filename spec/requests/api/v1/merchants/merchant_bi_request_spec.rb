@@ -15,7 +15,7 @@ RSpec.describe "Merchant BI API" do
     merchant = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(merchant["revenue"]).to eq(4800)
+    expect(merchant["revenue"]).to eq("48.0")
   end
 
   it "returns customers with pending invoices" do
@@ -71,13 +71,13 @@ it "returns revenue from a certain date for a merchant" do
       invoice.invoice_items << create(:invoice_item)
       invoice.transactions << create(:transaction)
     end
-  
+
     get "/api/v1/merchants/#{merchant.id}/revenue?date=2012-03-25T13:54:11.000Z"
 
     merchant = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(merchant["revenue"]).to eq(4800)
+    expect(merchant["revenue"]).to eq("48.0")
   end
 
   it "returns merchants with most items" do

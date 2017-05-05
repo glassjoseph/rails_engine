@@ -10,7 +10,7 @@ RSpec.describe "API random functionality" do
     invoice = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(invoice.count).to eq(6)
+    expect(invoice.count).to eq(4)
 
   end
 end

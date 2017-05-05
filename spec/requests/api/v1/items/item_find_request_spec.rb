@@ -31,7 +31,6 @@ RSpec.describe "Customer find API" do
 
     expect(response).to be_success
     expect(item['id']).to eq(db_item.id)
-    expect(item['unit_price']).to eq(db_item.unit_price)
   end
 
   it "can find item by id" do
@@ -79,5 +78,4 @@ RSpec.describe "Customer find API" do
     expect(response).to be_success
     expect(item['id']).to eq(db_item.id)
   end
-
 end

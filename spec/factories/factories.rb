@@ -67,7 +67,7 @@ FactoryGirl.define do
     sequence :credit_card_expiration_date do |n|
       "date: #{n}"
     end
-    result "failure"
+    result "failed"
   end
 
 

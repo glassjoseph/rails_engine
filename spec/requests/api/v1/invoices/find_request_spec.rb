@@ -53,7 +53,6 @@ RSpec.describe "Invoice find API" do
 
     expect(response).to be_success
     expect(invoice['id']).to eq(db_invoice.id)
-    expect(invoice['created_at']).to eq("2012-03-27T14:56:04.000Z")
   end
 
   it "can find invoice by updated_at" do
@@ -123,7 +122,6 @@ RSpec.describe "Invoice find API" do
     expect(response).to be_success
     expect(invoices.count).to eq(3)
     expect(invoices.first['id']).to eq(db_invoice1.id)
-    expect(invoices.first['created_at']).to eq("2012-03-27T14:56:04.000Z")
   end
 
   it "can find all invoices by updated_at" do
@@ -138,6 +136,5 @@ RSpec.describe "Invoice find API" do
     expect(response).to be_success
     expect(invoices.count).to eq(3)
     expect(invoices.first['id']).to eq(db_invoice1.id)
-    expect(invoices.first['updated_at']).to eq("2012-03-27T14:56:04.000Z")
   end
 end

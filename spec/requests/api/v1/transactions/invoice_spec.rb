@@ -11,6 +11,8 @@ RSpec.describe "Transactions API" do
     transactions = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(transactions).to eq(JSON.parse(transaction_with_invoice.invoice.to_json))
+    expect(transactions['id']).to eq(1)
+    expect(transactions['customer_id']).to eq(1)
+    expect(transactions['merchant_id']).to eq(1)
   end
 end

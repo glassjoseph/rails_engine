@@ -71,7 +71,7 @@ it "returns revenue from a certain date for a merchant" do
       invoice.invoice_items << create(:invoice_item)
       invoice.transactions << create(:transaction)
     end
-    
+  
     get "/api/v1/merchants/#{merchant.id}/revenue?date=2012-03-25T13:54:11.000Z"
 
     merchant = JSON.parse(response.body)

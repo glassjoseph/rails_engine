@@ -1,24 +1,26 @@
-# README
+### Rales Engine Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##Description
 
-Things you may want to cover:
+This project was an API with 25+ endpoints created from multiple CSVs using Ruby 2.3+ and PostgreSQL containing data from Etsy.
 
-* Ruby version
 
-* System dependencies
+## Setup
 
-* Configuration
+* 'git clone https://github.com/glassjoseph/rails_engine.git'
+* 'cd rales_engine'
+* remember to bundle!
+* 'rake db:create db:migrate' to create the PostgreSQL database with proper migrations.
+* 'rake data_import:csv_load' to seed all data.
 
-* Database creation
 
-* Database initialization
+## Testing
 
-* How to run the test suite
+Run 'rspec' in your terminal to execute entire test suite.
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+## Running the Server
+
+In the rales_engine directory run 'rails s' to boot up the server locally.
+visit http://localhost:3000/ + your chosen API endpoint. (TODO: Document all API endpoints)

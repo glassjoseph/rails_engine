@@ -1,6 +1,6 @@
 ### Rales Engine Project
 
-##Description
+## Description
 
 This project was an API with 25+ endpoints created from multiple CSVs using Ruby 2.3+ and PostgreSQL containing data from Etsy.
 

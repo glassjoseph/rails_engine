@@ -36,6 +36,12 @@ class Merchant < ApplicationRecord
 
   def self.most_items(limit)
     Merchant.joins(:items).order('count(items.merchant_id) DESC').group(:id).limit(limit)
+
+    # GET /api/v1/merchants/most_items?quantity=x returns the top x merchants ranked by total number of items sold
+    # Merchant.joins(:items, invoices: :transactions).merge(Transaction.successful).order('sum(invoice_items.quantity) DESC').group(:id).limit(limit)
+
+
+    # Merchant.joins(:invoice_items).merge(InvoiceItem.successful).group(:id).order('sum(quantity) DESC').limit(limit)
   end
 
   def customers_with_pending_invoices
